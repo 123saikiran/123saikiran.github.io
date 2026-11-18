@@ -61,7 +61,7 @@ function page(kind) {
   <meta name="theme-color" content="#ffffff">
   <meta property="og:type" content="website"><meta property="og:title" content="${escape(data.name)} — ${role}"><meta property="og:description" content="${escape(content.intro)}"><meta property="og:url" content="${escape(data.origin)}/${kind}/">
   <link rel="canonical" href="${escape(data.origin)}/${kind}/"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script>
+  <link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script>${developer ? '<script src="/contributions.js" type="module"></script>' : ''}
 </head>
 <body class="${kind}">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -71,6 +71,7 @@ function page(kind) {
     <main id="main">
       <section class="intro" aria-labelledby="name"><div class="profile"><span class="avatar" aria-hidden="true">${escape(data.initial)}</span><div><h1 id="name">${escape(data.name)}<span class="name-dot">.</span></h1><p class="role">${role}</p></div></div><p class="intro-copy">${escape(content.intro)}</p><div class="intro-links">${link(data.github,'GitHub')}<a href="#work">${developer?'Selected projects':'Selected edits'} <span aria-hidden="true">↓</span></a></div></section>
       <section id="work" aria-labelledby="work-title"><div class="section-heading"><h2 id="work-title">${developer?'Selected projects':'Selected edits'}</h2><span>${developer?'CODE & CONTEXT':'01 — 02'}</span></div>${developer ? `<div class="project-list">${content.projects.map(project).join('')}</div>` : `<p class="work-note">Two edits are being prepared for this collection.</p><div class="video-list">${content.videos.map(video).join('')}</div>`}</section>
+      ${developer ? `<section id="contributions" class="contributions" data-github-user="${escape(new URL(data.github).pathname.split('/').filter(Boolean)[0])}" aria-labelledby="contributions-title"><div class="section-heading"><h2 id="contributions-title">GitHub contributions</h2>${link(`${data.github}?tab=overview`,'View on GitHub','calendar-profile-link')}</div><p class="calendar-status" role="status" aria-live="polite">Loading public activity…</p><div class="calendar-content" hidden><p class="calendar-total"></p><div class="calendar-scroll" tabindex="0" role="region" aria-label="GitHub contribution calendar, scroll to explore the year"><div class="calendar-chart"></div></div><div class="calendar-footer"><span class="calendar-range"></span><span class="calendar-legend" aria-label="Contribution intensity, less to more">Less <i class="level-0"></i><i class="level-1"></i><i class="level-2"></i><i class="level-3"></i><i class="level-4"></i> More</span></div><p class="calendar-freshness">Live public activity · updates hourly</p></div><button class="calendar-retry" type="button" hidden>Try again</button><noscript><p class="calendar-no-script">Enable JavaScript to load the live calendar, or use the GitHub link above.</p></noscript></section>` : ''}
       <section class="about-contact"><div id="about"><h2>${developer?'A little background':'Behind the edits'}</h2><p>${escape(content.about)}</p></div><div id="contact"><h2>Let’s connect</h2><p>${developer?'Have something in mind?':'Want to talk about an edit?'}</p>${contact}</div></section>
     </main>
     <footer><span>${escape(data.name)} / ${role}</span><a href="${otherPath}">${otherRole} ${arrow}</a></footer>
@@ -93,7 +94,7 @@ for (const item of data.editor.videos) {
 }
 await mkdir(out,{recursive:true});
 await cp(path.join(root,'src/assets'),path.join(out,'assets'),{recursive:true});
-for (const file of ['site.css','site.js']) await cp(path.join(root,'src',file),path.join(out,file));
+for (const file of ['site.css','site.js','contributions.js','contributions-data.js']) await cp(path.join(root,'src',file),path.join(out,file));
 for (const kind of ['developer','editor']) {
   await mkdir(path.join(out,kind),{recursive:true});
   await writeFile(path.join(out,kind,'index.html'),page(kind));

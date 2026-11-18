@@ -54,3 +54,9 @@ Descriptions are grounded in the public READMEs. No employment history, usage me
 ## Motion
 
 The stars can be paused, and that preference persists between the two pages. System reduced-motion preferences disable stars and transitions. The animation layer does not intercept clicks.
+
+## Live contributions
+
+The developer page fetches the public calendar for `123saikiran` on each visit using [GitHub Contributions API](https://github.com/grubersjoe/github-contributions-api). It refreshes hourly while the page is visible and when returning to a tab whose data is at least an hour old. The service caches GitHub data for one hour; this is a live data widget, not an instantaneous event feed.
+
+No token is included in the site. Calendar cells and totals come from the API response. Failures show a retry action and direct GitHub link, and existing loaded data is labeled if a refresh fails. Tests cover UTC week alignment, year boundaries, count consistency, and malformed/gapped data.

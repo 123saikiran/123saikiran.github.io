@@ -5,6 +5,6 @@
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
-    "check": "node --check build.mjs && node --check src/site.js && node build.mjs"
+    "check": "node --check build.mjs && node --check src/site.js && node --check src/contributions.js && node --test test/contributions.test.mjs && node build.mjs"
   }
 }
