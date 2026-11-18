@@ -41,7 +41,7 @@ h1 { margin: 0; font-size: 38px; line-height: 1.1; font-weight: 600; letter-spac
 h2 { font-size: 14px; line-height: 1.5; font-weight: 600; letter-spacing: -.15px; margin: 0; }
 .section-heading > span { font-size: 9px; letter-spacing: 1px; }
 .project-list { display: grid; gap: 28px; }
-.project { padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.project { padding-bottom: 24px; border-bottom: 1px solid var(--line); scroll-margin-top: 24px; }
 .project:last-child { border-bottom: 0; padding-bottom: 0; }
 .project-main { display: grid; grid-template-columns: 248px minmax(0, 1fr); gap: 27px; }
 .project-visual { margin: 0; }
@@ -87,8 +87,44 @@ h3 a > span { font-size: 19px; font-weight: 400; }
 .calendar-retry { background: #fff; border: 1px solid #ddd; border-radius: 3px; padding: 7px 10px; margin-top: 10px; font-size: 10px; }
 .workflow { position: relative; display: grid; align-content: center; background: #fafafa; border: 1px solid var(--line); border-radius: 3px; min-height: 171px; padding: 29px 17px 26px; }
 .workflow-label { position: absolute; left: 13px; top: 11px; font-size: 7px; letter-spacing: 1px; }
-.workflow-nodes { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 10px; line-height: 1.6; }
-.workflow-nodes i { font-style: normal; font-size: 10px; }
+.workflow-toggle { position: absolute; top: 8px; right: 11px; padding: 3px 2px; border: 0; background: transparent; font-size: 8px; line-height: 1.5; }
+.workflow-toggle:hover { text-decoration: underline; text-underline-offset: 3px; }
+.workflow-toggle:disabled { cursor: default; text-decoration: none; }
+.newsbot-animation { display: block; width: 100%; height: 132px; }
+.newsbot-node { stroke: #d6d6d6; stroke-width: 1; fill: #fff; }
+.newsbot-document { stroke: #000; stroke-width: 1.1; fill: #fff; }
+.newsbot-icon { stroke: #000; stroke-width: 1.3; }
+.newsbot-route { stroke: #bcbcbc; stroke-width: 1; }
+.newsbot-labels { font-family: Arial, Helvetica, sans-serif; font-size: 9px; fill: #000; }
+.newsbot-packet, .newsbot-check { opacity: 0; }
+.packet-in { animation: newsbot-ingest 4.8s ease-in-out infinite; }
+.packet-out { animation: newsbot-dispatch 4.8s ease-in-out infinite; }
+.newsbot-plane { animation: newsbot-deliver 4.8s ease-in-out infinite; }
+.newsbot-check { animation: newsbot-confirm 4.8s ease-in-out infinite; }
+.workflow-paused .newsbot-animation * { animation-play-state: paused; }
+@keyframes newsbot-ingest {
+  0%, 5% { opacity: 0; transform: translateX(0); }
+  10% { opacity: 1; transform: translateX(0); }
+  30% { opacity: 1; transform: translateX(31px); }
+  35%, 100% { opacity: 0; transform: translateX(31px); }
+}
+@keyframes newsbot-dispatch {
+  0%, 38% { opacity: 0; transform: translateX(0); }
+  43% { opacity: 1; transform: translateX(0); }
+  60% { opacity: 1; transform: translateX(34px); }
+  65%, 100% { opacity: 0; transform: translateX(34px); }
+}
+@keyframes newsbot-deliver {
+  0%, 59%, 100% { opacity: 1; transform: translate(0, 0); }
+  70% { opacity: 1; transform: translate(5px, -4px); }
+  81% { opacity: 0; transform: translate(15px, -11px); }
+  82% { opacity: 0; transform: translate(0, 0); }
+  94% { opacity: 1; transform: translate(0, 0); }
+}
+@keyframes newsbot-confirm {
+  0%, 69%, 100% { opacity: 0; }
+  76%, 91% { opacity: 1; }
+}
 .workflow-command { font-size: 8px; font-family: 'SFMono-Regular', Consolas, monospace; position: absolute; bottom: 11px; left: 0; right: 0; text-align: center; }
 .about-contact { display: grid; grid-template-columns: 1.15fr 1fr; gap: 45px; margin-top: 36px; padding: 29px 0 36px; border-top: 1px solid var(--line); }
 .about-contact p { margin: 12px 0 0; font-size: 12px; line-height: 1.9; }
@@ -154,7 +190,6 @@ footer a { display: inline-flex; gap: 8px; align-items: center; }
   .project-category { font-size: 9px; }
   .project-summary { font-size: 12px; }
   .workflow { min-height: 192px; }
-  .workflow-nodes { font-size: 11px; }
   .workflow-command { font-size: 9px; }
   .about-contact { grid-template-columns: 1fr; gap: 26px; padding-top: 25px; padding-bottom: 29px; margin-top: 29px; }
   .notes-body p { font-size: 11px; }

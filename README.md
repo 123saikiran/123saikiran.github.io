@@ -55,6 +55,8 @@ Descriptions are grounded in the public READMEs. No employment history, usage me
 
 The stars can be paused, and that preference persists between the two pages. System reduced-motion preferences disable stars and transitions. The animation layer does not intercept clicks.
 
+The Newsbot card has a small, monochrome workflow animation: headlines flow from RSS feeds into a digest, then a paper plane delivers it to Telegram. It is an illustration of the documented workflow, not a running bot. Its Pause/Play control is independent of the stars, and reduced-motion preferences show a static diagram.
+
 ## Live contributions
 
 The developer page fetches the public calendar for `123saikiran` on each visit using [GitHub Contributions API](https://github.com/grubersjoe/github-contributions-api). It refreshes hourly while the page is visible and when returning to a tab whose data is at least an hour old. The service caches GitHub data for one hour; this is a live data widget, not an instantaneous event feed.

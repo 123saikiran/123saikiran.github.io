@@ -20,3 +20,22 @@ toggle?.addEventListener('click', () => {
 });
 reducedMotion.addEventListener('change', renderMotion);
 renderMotion();
+
+const newsbot = document.querySelector('[data-newsbot]');
+if (newsbot) {
+  const workflowToggle = newsbot.querySelector('.workflow-toggle');
+  let workflowEnabled = true;
+  function renderWorkflowMotion() {
+    const active = workflowEnabled && !reducedMotion.matches;
+    newsbot.classList.toggle('workflow-paused', !active);
+    workflowToggle.setAttribute('aria-pressed', String(active));
+    workflowToggle.textContent = reducedMotion.matches ? 'Motion off' : active ? 'Pause' : 'Play';
+    workflowToggle.disabled = reducedMotion.matches;
+  }
+  workflowToggle.addEventListener('click', () => {
+    workflowEnabled = !workflowEnabled;
+    renderWorkflowMotion();
+  });
+  reducedMotion.addEventListener('change', renderWorkflowMotion);
+  renderWorkflowMotion();
+}
