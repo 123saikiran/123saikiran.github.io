@@ -1,0 +1,95 @@
+{
+  "name": "Saikiran",
+  "initial": "S",
+  "github": "https://github.com/123saikiran",
+  "email": null,
+  "origin": "https://123saikiran.github.io",
+  "developer": {
+    "intro": "I build practical tools and interfaces. My work includes a native Fire TV launcher and a daily news digest.",
+    "about": "I’m interested in software that makes everyday tasks a little easier. These projects bring together interface work, device customization, and automation.",
+    "projects": [
+      {
+        "name": "AFT Home",
+        "category": "Native TV interface",
+        "summary": "A lightweight Android TV launcher for Fire TV, with a clear app layout and navigation designed for a remote.",
+        "image": "assets/aft-home.jpg",
+        "imageAlt": "AFT Home running on Fire TV, showing a clock and a horizontal row of app cards over a mountain background.",
+        "tags": [
+          "Java",
+          "Android TV",
+          "Gradle"
+        ],
+        "repository": "https://github.com/123saikiran/fire-TV-custom-launcher",
+        "readme": "https://github.com/123saikiran/fire-TV-custom-launcher/blob/main/README.md",
+        "notes": [
+          {
+            "label": "Interface",
+            "text": "Installed apps are discovered and ordered into a horizontal row. D-pad navigation remembers the last focused app."
+          },
+          {
+            "label": "Device behavior",
+            "text": "A launcher chooser, Wi-Fi shortcut, and low-motion screensaver are documented alongside the Fire OS setup and recovery steps."
+          },
+          {
+            "label": "Work proof",
+            "text": "The repository includes the native Java implementation, build instructions, and screenshots captured on Fire TV."
+          }
+        ],
+        "evidence": {
+          "readmeSha": "361504b0e70fe7d0bac03febad0000c55b361e0c",
+          "screenshot": "https://raw.githubusercontent.com/123saikiran/fire-TV-custom-launcher/main/docs/screenshots/aft-home-main.jpg"
+        }
+      },
+      {
+        "name": "Newsbot",
+        "category": "Everyday automation",
+        "summary": "A personal AI and technology news digest that collects RSS headlines and links, then delivers them to Telegram.",
+        "visual": "newsbot-workflow",
+        "tags": [
+          "Python",
+          "RSS",
+          "GitHub Actions"
+        ],
+        "repository": "https://github.com/123saikiran/Newsbot",
+        "readme": "https://github.com/123saikiran/Newsbot/blob/main/README.md",
+        "notes": [
+          {
+            "label": "Workflow",
+            "text": "Configured RSS feeds are fetched, filtered by a lookback window, and formatted into a headlines-and-links digest."
+          },
+          {
+            "label": "Running it",
+            "text": "The command line supports feed checks and dry runs. GitHub Actions can run the digest on a daily schedule."
+          },
+          {
+            "label": "Work proof",
+            "text": "The public source separates feed handling, configuration, digest formatting, and Telegram delivery, with offline tests documented in the README."
+          }
+        ],
+        "evidence": {
+          "readmeSha": "2114f453bb473202078391b7132d779794620b8c"
+        }
+      }
+    ]
+  },
+  "editor": {
+    "intro": "Video editing, with attention to the story behind each cut.",
+    "about": "This portfolio is being put together around two edits. Each will include the finished video and a short breakdown of the editing decisions.",
+    "videos": [
+      {
+        "title": "Edit 01",
+        "subtitle": "First selected edit",
+        "media": null,
+        "role": null,
+        "notes": []
+      },
+      {
+        "title": "Edit 02",
+        "subtitle": "Second selected edit",
+        "media": null,
+        "role": null,
+        "notes": []
+      }
+    ]
+  }
+}
